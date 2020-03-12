@@ -1,1 +1,2 @@
 # FitnessCentreTrainingOrganiser
+Ссылка Trello
