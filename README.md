@@ -1,5 +1,4 @@
 # Fitness Centre Training Organiser
-Ссылка Trello https://trello.com/b/FvBS5sKk/тп-проект
 ### Сайт для организации занятий в фитнес-центре
 •	Steals0000/Vlad Dmitriev - Дмитриев Владислав, 2.1 группа <br>
 • MightyBeas – Козлов Дмитрий, 2.1 группа <br>
