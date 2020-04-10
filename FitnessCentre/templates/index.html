@@ -1,0 +1,61 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+FitnessCentre
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='starter-template.css')}}">
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">FitnessCentre</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Главная</a></li>
+                <li><a href="{{ url_for('login') }}">Вход</a></li>
+                <li><a href="{{ url_for('signup') }}">Регистрация</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div>
+        <h2>Расписание</h2>
+        <table class="table_col">
+            <colgroup>
+                <col style="background:#C7DAF0;">
+            </colgroup>
+            <tr>
+                <th></th>
+                <th>Дата</th>
+                <th>Время</th>
+                <th>Зарезервировано</th>
+            </tr>
+            {% for date in dates %}
+            <tr>
+                <th>{{date.day}}</th>
+                <td>{{date.date}}</td>
+                <td>{{date.time}}</td>
+                <td>{{date.people}}/30</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div><!-- /.container -->
+{% endblock %}
