@@ -6,7 +6,8 @@ Home
 
 {% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='home.css')}}">
+    <link rel="stylesheet" href="{{url_for('.static', filename='home.css')}}">
+    <link rel="stylesheet" href="{{url_for('.static', filename='fonts.css')}}" />
 {% endblock %}
 
 {% block content %}
@@ -20,39 +21,53 @@ Home
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Фитнесс</a>
+            <a class="navbar-brand" href="#">{{ username }}</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">111</a></li>
-                <li><a href="#">настройки</a></li>
-                <li><a href="#">профиль</a></li>
+                <li><a href="{{ url_for('admin') }}">Панель администратора</a></li>
+                <li><a href="{{ url_for('profile') }}">Профиль</a></li>
                 <li><a href="{{ url_for('logout') }}">Выйти</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
         </div>
     </div>
 </nav>
-<h1 class="page-header">Welcome, {{ name }}</h1>
-<table class="table_col">
-    <colgroup>
-        <col style="background:#C7DAF0;">
-    </colgroup>
+    <div class="container">
+<h1 class="page-header">Здравствуйте, {{ FIO }}!</h1>
+
+
+    <div class="timetable">
+    <h2>Расписание</h2>
+    <h4>Выберите удобный для Вас день для перехода к подробному расписанию дня</h4>
+<table class="table-col">
     <tr>
-        <th></th>
+        <th>День недели</th>
         <th>Дата</th>
-        <th>Время</th>
-        <th>Зарезервировано</th>
     </tr>
-    {% for date in dates %}
+
     <tr>
-        <th>{{date.day}}</th>
-        <td>{{date.date}}</td>
-        <td>{{date.time}}</td>
-        <td>{{date.people}}/30</td>
+        <td><a href="daytime">{{dates.day}}</a></td>
+        <td><a href="#">{{dates.date}}</a></td>
     </tr>
-    {% endfor %}
+      <tr>  <td><a href="daytime">Вторник</a></td>
+        <td><a href="#">2.06.2020</a></td></tr>
+       <tr> <td><a href="daytime">Среда</a></td>
+        <td><a href="#">3.06.2020</a></td></tr>
+       <tr> <td><a href="daytime">Четверг</a></td>
+        <td><a href="#">4.06.2020</a></td></tr>
+       <tr> <td><a href="daytime">Пятница</a></td>
+        <td><a href="#">5.06.2020</a></td></tr>
+        <tr>  <td><a href="daytime">Понедельник</a></td>
+        <td><a href="#">8.06.2020</a></td></tr>
+      <tr><td><a href="daytime">Вторник</a></td>
+        <td><a href="#">9.06.2020</a></td></tr>
+       <tr> <td><a href="daytime">Среда</a></td>
+        <td><a href="#">10.06.2020</a></td></tr>
+       <tr> <td><a href="daytime">Четверг</a></td>
+        <td><a href="#">11.06.2020</a></td></tr>
+       <tr> <td><a href="daytime">Пятница</a></td>
+        <td><a href="#">12.06.2020</a></td></tr>
 </table>
 {% endblock %}
+    </div>
+</div>

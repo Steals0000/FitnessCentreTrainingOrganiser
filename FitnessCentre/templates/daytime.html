@@ -1,0 +1,122 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+FitnessCentre
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='daytime.css')}}">
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{ username }}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('home') }}">Главная</a></li>
+                <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script language="JavaScript" type="text/javascript">
+     function showForm(i){
+         document.getElementById(i).style.display = 'block';
+         return true;
+     }
+
+     function show(arr){
+        document.getElementById(i).style.display = 'block';
+        return true;
+     }
+</script>
+
+<div class="container">
+    <div class="main-table">
+        <h2>Расписание на {{data1[0].date}}</h2>
+        <table class="table-col">
+            <tr>
+                {% for date in data1 %}
+                <td><div class="td-part">
+                    <div class="timestatus">
+                        <span>{{date.time}}</span><p>Занято {{date.people_count}}/20</p>
+                    </div>
+                    <div class="btns">
+                        <form action="/daytime_data/{{date.id}}/" method="POST" >
+                        <input type="submit" class="btn btn-dark" value="Записаться" onclick="return show({{date.users_id}})">
+                        </form>
+                        <form id="{{date.id}}" action="/daytime_data/{{date.id}}/" method="POST" style="display:none;">
+                        <input type="submit" class="btn btn-dark" value="Записаться" onclick="return showForm()">
+                        </form>
+                    </div>
+                </div></td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                {% for date in data2 %}
+                <td><div class="td-part">
+                    <div class="timestatus">
+                        <span>{{date.time}}</span><p>Занято {{date.people_count}}/20</p>
+                    </div>
+                    <div class="btns">
+                        <form action="/daytime_data/{{date.id}}/" method="POST" >
+                        <input type="submit" class="btn btn-dark" value="Записаться" onclick="return show({{date.users_id}})">
+                        </form>
+                        <form id="{{date.id}}" action="/daytime_data/{{date.id}}/" method="POST" style="display:none;">
+                        <input type="submit" class="btn btn-dark" value="Записаться" onclick="return showForm()">
+                        </form>
+                    </div>
+                </div></td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                {% for date in data3 %}
+                <td><div class="td-part">
+                    <div class="timestatus">
+                        <span>{{date.time}}</span><p>Занято {{date.people_count}}/20</p>
+                    </div>
+                    <div class="btns">
+                        <form action="/daytime_data/{{date.id}}/" method="POST">
+                        <input type="submit" class="btn btn-dark" value="Записаться">
+                        </form>
+
+                    </div>
+                </div></td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                {% for date in data4 %}
+                <td><div class="td-part">
+                    <div class="timestatus">
+                        <span>{{date.time}}</span><p>Занято {{date.people_count}}/20</p>
+                    </div>
+                    <div class="btns">
+                        <form action="/daytime_data/{{date.id}}/" method="POST">
+                        <input type="submit" class="btn btn-dark" value="Записаться">
+                        </form>
+                    </div>
+                </div></td>
+                {% endfor %}
+            </tr>
+
+
+
+        </table>
+    </div>
+</div><!-- /.container -->
+{% endblock %}

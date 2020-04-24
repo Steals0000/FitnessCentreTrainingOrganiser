@@ -33,29 +33,18 @@ FitnessCentre
 </nav>
 
 <div class="container">
-
-    <div>
-        <h2>Расписание</h2>
-        <table class="table_col">
-            <colgroup>
-                <col style="background:#C7DAF0;">
-            </colgroup>
-            <tr>
-                <th></th>
-                <th>Дата</th>
-                <th>Время</th>
-                <th>Зарезервировано</th>
-            </tr>
-            {% for date in dates %}
-            <tr>
-                <th>{{date.day}}</th>
-                <td>{{date.date}}</td>
-                <td>{{date.time}}</td>
-                <td>{{date.people}}/30</td>
-            </tr>
-            {% endfor %}
+<div class="title">
+    <h1>Добро пожаловать!</h1>
+    <h4>Вы на ходитесь на главной странице спортивного зала "Fitness Centre". <br> Ниже представлена актуальная информация о расписании занятий на сегодняшний день</h4>
+</div>
+    <div class="main-table">
+        <h2>Расписание на {{dates[0].date}} {{dates[0].day}}</h2>
+        <table class="table-col">
+            <tr><td><span>{{dates[0].time}}</span><br>Занято {{dates[0].people_count}}/20</td><td><span>{{dates[1].time}}</span><br>Занято {{dates[1].people_count}}/20</td><td><span>{{dates[2].time}}</span><br>Занято {{dates[2].people_count}}/20</td><td><span>{{dates[3].time}}</span><br>Занято {{dates[3].people_count}}/20</td><td><span>{{dates[4].time}}</span><br>Занято {{dates[4].people_count}}/20</td><td><span>{{dates[5].time}}</span><br>Занято {{dates[5].people_count}}/20</td></tr>
+            <tr><td><span>{{dates[6].time}}</span><br>Занято {{dates[6].people_count}}/20</td><td><span>{{dates[7].time}}</span><br>Занято {{dates[7].people_count}}/20</td><td><span>{{dates[8].time}}</span><br>Занято {{dates[8].people_count}}/20</td><td><span>{{dates[9].time}}</span><br>Занято {{dates[9].people_count}}/20</td><td><span>{{dates[10].time}}</span><br>Занято {{dates[10].people_count}}/20</td><td><span>{{dates[11].time}}</span><br>Занято {{dates[11].people_count}}/20</td></tr>
+            <tr><td><span>{{dates[12].time}}</span><br>Занято {{dates[12].people_count}}/20</td><td><span>{{dates[13].time}}</span><br>Занято {{dates[13].people_count}}/20</td><td><span>{{dates[14].time}}</span><br>Занято {{dates[14].people_count}}/20</td><td><span>{{dates[15].time}}</span><br>Занято {{dates[15].people_count}}/20</td><td><span>{{dates[16].time}}</span><br>Занято {{dates[16].people_count}}/20</td><td><span>{{dates[17].time}}</span><br>Занято {{dates[17].people_count}}/20</td></tr>
+            <tr><td><span>{{dates[18].time}}</span><br>Занято {{dates[18].people_count}}/20</td><td><span>{{dates[19].time}}</span><br>Занято {{dates[19].people_count}}/20</td><td><span>{{dates[20].time}}</span><br>Занято {{dates[20].people_count}}/20</td></tr>
         </table>
     </div>
-
 </div><!-- /.container -->
 {% endblock %}

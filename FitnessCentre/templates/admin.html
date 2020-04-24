@@ -1,0 +1,75 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+AdminPanel
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='admin.css')}}">
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{ username }}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('home') }}">Главная</a></li>
+                <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<head>
+    <link rel="stylesheet" href="{{url_for('.static', filename='admin.css')}}">
+    <title>Панель администратора</title>
+</head>
+
+<body>
+    <div class="all_admin">
+        <h1>Панель администратора</h1>
+        <div class="admin">
+            <div class=>
+                <h2>Список клиентов</h2>
+                <table>
+                    <tr><th>ФИО клиента</th><th>Абонемент до</th></tr>
+                    {% for user in clients1 %}
+                    <tr><td>{{user.surname}} {{user.name}} {{user.midname}}</td>
+                        <td>{{user.enddate}}</td><td><form action="/admin/edt{{user.id}}/" method="POST"><input type="submit"  value="Редактировать"></form><form action="/admin/del{{user.id}}/" method="POST"><input type="submit"  value="Удалить"></form></td>
+                    </tr>
+                    {% endfor %}
+                    {% for user in clients2 %}
+                    <tr><td>{{user.surname}} {{user.name}} {{user.midname}}</td>
+                        <td>{{user.enddate}}</td><td><form action="/admin/edt{{user.id}}/" method="POST"><input type="submit"  value="Редактировать"></form><form action="/admin/del{{user.id}}/" method="POST"><input type="submit"  value="Удалить"></form></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <a href="{{ url_for('add') }}">Добавить нового клиента</a>
+            </div>
+            <div class="coach">
+                <h2>Список тренеров</h2>
+                                <table>
+                    <tr><th>ФИО клиента</th></tr>
+                    {% for user in treners %}
+                    <tr><td>{{user.surname}} {{user.name}} {{user.midname}}</td>
+                        <td><form action="/admin/edt{{user.id}}/" method="POST"><input type="submit"  value="Редактировать"></form><form action="/admin/del{{user.id}}/" method="POST"><input type="submit"  value="Удалить"></form></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <a href="{{ url_for('add') }}">Добавить нового тренера</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+{% endblock %}
