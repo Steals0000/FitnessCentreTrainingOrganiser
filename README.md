@@ -11,3 +11,5 @@
 •	[ТЗ.pdf](https://github.com/Steals0000/FitnessCentreTrainingOrganiser/blob/master/documents/TZ.pdf) <br>
 •	[Курсовая.doc](https://github.com/Steals0000/FitnessCentreTrainingOrganiser/blob/master/documents/Kursovaya_rabota.docx) <br>
 •	[Курсовая.pdf](https://github.com/Steals0000/FitnessCentreTrainingOrganiser/blob/master/documents/Kursovaya_rabota.pdf) <br>
+•	[Отчетный документ по ролям.doc](https://github.com/Steals0000/FitnessCentreTrainingOrganiser/blob/master/documents/Otchetniy%20dokument%20po%20rolyam.docx) <br>
+•	[Отчетный документ по ролям.pdf](https://github.com/Steals0000/FitnessCentreTrainingOrganiser/blob/master/documents/Otchetniy%20dokument%20po%20rolyam.pdf)
