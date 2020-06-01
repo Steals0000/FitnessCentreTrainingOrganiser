@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-Home
+Profile
 {% endblock %}
 
 {% block styles %}
@@ -11,6 +11,21 @@ Home
 {% endblock %}
 
 {% block content %}
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(65003125, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/65003125" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -40,9 +55,16 @@ Home
         <tr><td>Имя</td><td>{{ name }}</td></tr>
         <tr><td>Фамилия</td><td>{{ surname }}</td></tr>
         <tr><td>Отчество</td><td>{{ midname }}</td></tr>
+        {% if user_lvl !=3 %}
         <tr><td>Номер абонемента</td><td>{{ ticket }}</td></tr>
+        {% endif %}
     </table>
+        {% if user_lvl !=3 %}
     <p>Абонемент №1 действителен до {{enddate}}</p>
+        {% endif %}
+        {% if user_lvl ==3 %}
+        <p>Для полного доступа пройдите верификацию по номеру +79107320110</p>
+        {% endif %}
     </div>
 
 {% endblock %}

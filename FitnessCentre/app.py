@@ -61,13 +61,13 @@ def signup():
 def home():
     data = models.Date.query.all()
     newdata = data[0]
-    return render_template('home.html', FIO=current_user.name+' '+current_user.midname, username=current_user.username, name=current_user.name, surname=current_user.surname, midname=current_user.midname, dates=newdata, user_lvl=current_user.user_lvl, date=data)
+    return render_template('home.html', FIO=current_user.name+' '+current_user.midname, username=current_user.username, name=current_user.name, surname=current_user.surname, midname=current_user.midname, curdate=newdata, user_lvl=current_user.user_lvl, dates = data)
 
 @app.route('/profile')
 @login_required
 def profile():
     data = models.Date.query.all()
-    return render_template('profile.html', username=current_user.username, name=current_user.name, surname=current_user.surname, midname=current_user.midname, enddate=current_user.enddate, ticket=current_user.ticket )
+    return render_template('profile.html', username=current_user.username, name=current_user.name, surname=current_user.surname, midname=current_user.midname, enddate=current_user.enddate, ticket=current_user.ticket, user_lvl=current_user.user_lvl)
 
 @app.route('/daytime')
 @login_required
@@ -85,7 +85,7 @@ def daytime():
     for i in range(3):
         data4.append(data[i+18])
 
-    return render_template('daytime.html', id=current_user.id, name=current_user.username, data1=data1, data2=data2, data3=data3, data4=data4)
+    return render_template('daytime.html', id=current_user.id, name=current_user.username, data1=data1, data2=data2, data3=data3, data4=data4, access = 0)
 
 @app.route('/daytime_data/<index>/', methods=['POST'])
 @login_required
@@ -117,17 +117,7 @@ def admin_del(index):
     db.session.delete(user)
     db.session.commit()
     users = models.User.query.all()
-    clients1 = []
-    clients2 = []
-    treners = []
-    for user in users:
-        if user.user_lvl == 3:
-            clients1.append(user)
-        elif user.user_lvl == 2:
-            clients2.append(user)
-        elif user.user_lvl == 1:
-            treners.append(user)
-    return render_template('admin.html', name=current_user.username, clients1=clients1, clients2=clients2, treners=treners)
+    return render_template('admin.html', id=current_user.id, name=current_user.username, users=users)
 
 @app.route('/admin')
 @login_required

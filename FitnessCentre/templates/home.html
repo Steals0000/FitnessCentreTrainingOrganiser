@@ -11,6 +11,21 @@ Home
 {% endblock %}
 
 {% block content %}
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(65003125, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/65003125" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -21,11 +36,13 @@ Home
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">{{ username }}</a>
+            <a class="navbar-brand" >{{ username }}</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                {% if user_lvl == 0 %}
                 <li><a href="{{ url_for('admin') }}">Панель администратора</a></li>
+                {% endif %}
                 <li><a href="{{ url_for('profile') }}">Профиль</a></li>
                 <li><a href="{{ url_for('logout') }}">Выйти</a></li>
             </ul>
@@ -38,16 +55,22 @@ Home
 
     <div class="timetable">
     <h2>Расписание</h2>
+    {% if user_lvl !=3 %}
     <h4>Выберите удобный для Вас день для перехода к подробному расписанию дня</h4>
+    {% endif %}
+    {% if user_lvl ==3 %}
+        <h4>Для полного доступа пройдите верификацию по номеру +79107320110</h4>
+    {% endif %}
 <table class="table-col">
+    {% if user_lvl !=3 %}
     <tr>
         <th>День недели</th>
         <th>Дата</th>
     </tr>
 
     <tr>
-        <td><a href="daytime">{{dates.day}}</a></td>
-        <td><a href="#">{{dates.date}}</a></td>
+        <td><a href="daytime">{{curdate.day}}</a></td>
+        <td><a href="#">{{curdate.date}}</a></td>
     </tr>
       <tr>  <td><a href="daytime">Вторник</a></td>
         <td><a href="#">2.06.2020</a></td></tr>
@@ -67,6 +90,15 @@ Home
         <td><a href="#">11.06.2020</a></td></tr>
        <tr> <td><a href="daytime">Пятница</a></td>
         <td><a href="#">12.06.2020</a></td></tr>
+    {% endif %}
+    {% if user_lvl ==3 %}
+            <table class="table-col">
+            <tr><td><span>{{dates[0].time}}</span><br>Занято {{dates[0].people_count}}/20</td><td><span>{{dates[1].time}}</span><br>Занято {{dates[1].people_count}}/20</td><td><span>{{dates[2].time}}</span><br>Занято {{dates[2].people_count}}/20</td><td><span>{{dates[3].time}}</span><br>Занято {{dates[3].people_count}}/20</td><td><span>{{dates[4].time}}</span><br>Занято {{dates[4].people_count}}/20</td><td><span>{{dates[5].time}}</span><br>Занято {{dates[5].people_count}}/20</td></tr>
+            <tr><td><span>{{dates[6].time}}</span><br>Занято {{dates[6].people_count}}/20</td><td><span>{{dates[7].time}}</span><br>Занято {{dates[7].people_count}}/20</td><td><span>{{dates[8].time}}</span><br>Занято {{dates[8].people_count}}/20</td><td><span>{{dates[9].time}}</span><br>Занято {{dates[9].people_count}}/20</td><td><span>{{dates[10].time}}</span><br>Занято {{dates[10].people_count}}/20</td><td><span>{{dates[11].time}}</span><br>Занято {{dates[11].people_count}}/20</td></tr>
+            <tr><td><span>{{dates[12].time}}</span><br>Занято {{dates[12].people_count}}/20</td><td><span>{{dates[13].time}}</span><br>Занято {{dates[13].people_count}}/20</td><td><span>{{dates[14].time}}</span><br>Занято {{dates[14].people_count}}/20</td><td><span>{{dates[15].time}}</span><br>Занято {{dates[15].people_count}}/20</td><td><span>{{dates[16].time}}</span><br>Занято {{dates[16].people_count}}/20</td><td><span>{{dates[17].time}}</span><br>Занято {{dates[17].people_count}}/20</td></tr>
+            <tr><td><span>{{dates[18].time}}</span><br>Занято {{dates[18].people_count}}/20</td><td><span>{{dates[19].time}}</span><br>Занято {{dates[19].people_count}}/20</td><td><span>{{dates[20].time}}</span><br>Занято {{dates[20].people_count}}/20</td></tr>
+        </table>
+    {% endif %}
 </table>
 {% endblock %}
     </div>
